@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="advicts_journal_transactions_report.journal_transactions_menuitem" name="Journal Transactions Report"
+              action="advicts_journal_transactions_report.journal_transactions_report_wizard_action"
+              parent="account.account_reports_legal_statements_menu" sequence="210"/>
+</odoo>

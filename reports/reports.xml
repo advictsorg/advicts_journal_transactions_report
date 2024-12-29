@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="journal_transactions_report_action" model="ir.actions.report">
+        <field name="name">Journal Transactions Report</field>
+        <field name="model">journal.transactions.report</field>
+        <field name="binding_model_id" ref="model_journal_transactions_report"/>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">advicts_journal_transactions_report.journal_transactions_template</field>
+        <field name="report_file">advicts_journal_transactions_report.journal_transactions_template</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="journal_transactions_report_action_xlsx" model="ir.actions.report">
+        <field name="name">Journal Transactions Report</field>
+        <field name="model">journal.transactions.report</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">advicts_journal_transactions_report.transactions_xlsx</field>
+        <field name="report_file">advicts_journal_transactions_report.transactions_xlsx</field>
+    </record>
+
+</odoo>

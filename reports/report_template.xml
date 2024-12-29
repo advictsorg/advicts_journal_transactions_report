@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="journal_transactions_template" name="journal_transactions_template">
+        <t t-call="web.html_container"/>
+        <t t-call="web.external_layout">
+
+            <div class="page">
+                <style>
+                    @font-face {
+                    font-family: 'Tajawal'
+                    src: url('/fonts/Tajawal-Bold.ttf') format('truetype');
+                    }
+                    .badge {
+                    display: inline-block;
+                    padding: 0.25em 0.4em;
+                    font-size: 75%;
+                    font-weight: 700;
+                    line-height: 1;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: baseline;
+                    border-radius: 0.25rem;
+                    }
+
+                </style>
+                <div class="row text-center mt-3 mb-3" style="font-family: 'Tajawal', sans-serif' !important">
+                    <div class="col-12">
+                        Journal Transactions Report
+                    </div>
+                    <div class="col-8">
+                        <t t-esc="journal"/>
+                    </div>
+                    <div class="col-4">
+                        <t t-esc="start_date"/>
+                        -
+                        <t t-esc="end_date"/>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <table class="table table-condensed table-striped mt-3"
+                           style="font-family: 'Tajawal', sans-serif';border: 0px !important">
+                        <thead>
+                            <tr>
+                                <th align="center">
+                                    Starting Balance
+                                </th>
+                                <th align="center">
+                                    <t t-esc="first_transaction_date"/>
+                                </th>
+                                <th align="center">
+                                    <t t-esc="first_transaction_balance"/>
+                                    <span t-esc="company_currency"/>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th align="center">
+                                    Ending Balance
+                                </th>
+                                <th align="center">
+                                    <t t-esc="last_transaction_date"/>
+                                </th>
+                                <th align="center">
+                                    <t t-esc="last_transaction_balance"/>
+                                    <span t-esc="company_currency"/>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="row mt-3">
+                    <table class="table table-condensed table-striped mt-3"
+                           style="font-family: 'Tajawal', sans-serif';border: 0px !important">
+                        <thead style="background-color:#ffd966 !important">
+                            <tr>
+                                <th align="center">
+                                    #
+                                </th>
+                                <th align="center">
+                                    Date
+                                </th>
+                                <th align="center">
+                                    Partner
+                                </th>
+                                <th align="center">
+                                    Label
+                                </th>
+                                <th align="center">
+                                    Amount
+                                </th>
+                                <th align="center">
+                                    Running Balance
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="count" t-value="0"/>
+                            <t t-foreach="data" t-as="line">
+                                <t t-set="count" t-value="count + 1"/>
+
+                                <tr>
+                                    <td>
+                                        <span t-esc="count"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['date']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['partner']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['label']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="'{:,}'.format(line['amount'])"/>
+                                        <span t-esc="company_currency"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="'{:,}'.format(line['running_balance'])"/>
+                                        <span t-esc="company_currency"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+</odoo>
